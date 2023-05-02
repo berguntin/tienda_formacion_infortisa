@@ -22,6 +22,8 @@
         exit();
     }
     else{
-        $userController->authError();
+        global $smarty;
+        $smarty->assign('error', 'Credenciales incorrectas!');
+        $smarty->display('login.tpl');
         }
     }

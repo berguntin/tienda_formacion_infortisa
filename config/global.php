@@ -25,8 +25,6 @@
     $conn = new mysqli("localhost", 'root', 'root', 'Users');
     $conn->set_charset("utf8mb4");
 
-    if ($conn->connect_error)
-    {
+    if ($conn->connect_error) {
         die("Conexion con base de datos fallida!") . $conn->connect_error;
     }
-    echo "Conexion correcta! ";

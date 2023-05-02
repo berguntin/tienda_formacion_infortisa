@@ -1,3 +1,9 @@
-body{
-    background-color: blueviolet;
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+
+*{
+    box-sizing: border-box;
+}
+.error-sm{
+    color: red;
+    font-size: x-small;
 }

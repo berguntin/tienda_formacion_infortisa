@@ -31,7 +31,8 @@ class Product
             $data = $result->fetch_array(MYSQLI_ASSOC);
 
             $this->assign_variables($data);
-            return $this;
+
+            return $data;
         }
         catch (mysqli_sql_exception)
         {

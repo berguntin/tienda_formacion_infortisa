@@ -1,34 +1,31 @@
 {*Smarty*}
 {extends file="layout.tpl"}
-{block name=title}Login{/block}
-{block name=body}
-<header><h1>Login</h1></header>
-
-    <form id="login" action="login.php" method="POST">
+{block name='title'}Login{/block}
+{block name='body'}
+    <div class="container container-fluid justify-content-center">
         <h3>Acceso a usuarios</h3>
-        <label for="mail">Usuario:</label>
-        <input type="email" id="mail" name="mail" required>
-        <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password" required>
-        <span class="error">{$error}</span>
-        <button name="submit">Enviar</button>
-    </form>
+        <form id="login" action="login.php" method="POST">
+            <div class="mb-3">
+                <label for="mail" class="form-label">Usuario:</label>
+                <input class="form-control" type="email" id="mail" name="mail" required>
+            </div>
+            <div class="mb-2">
+                <label for="password" class="form-label">Contraseña:</label>
+                <input class="form-control" type="password" id="password" name="password" required>
+                <div class="form-text">
+                    <span class="text-danger form-label">{$error}</span>
+                </div>
+            </div>
+
+                <button name="submit" class="btn btn-primary">Enviar</button>
+
+        </form>
+    </div>
 
 {literal}
 <script type="text/javascript">
-   /* const sendRequest = (method, url) => {
-        const promise = new Promise((resolve, reject)=> {
-            const xhr = new XMLHttpRequest();
-            xhr.open(method, url);
-            xhr.responseType = 'json';
-            xhr.onload = () => {
-                resolve(xhr.response);
-            }
-            xhr.send()
-        })
-        return promise;
-    }
-    const loginForm = document.getElementById('login');
+
+   /* const loginForm = document.getElementById('login');
 
     loginForm.addEventListener('submit', (event) =>{
         event.preventDefault();
