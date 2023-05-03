@@ -1,22 +1,45 @@
 <?php
 
-Class RoutingManager {
+class Router
+{
+    private $_uri = array();
+    private $_action = array();
 
-    public function init() :void
+    public function add($uri, $action = null)
     {
-        $request = $_SERVER['REQUEST_URI'];
-        var_dump($request);
-        $productController = new ProductController();
-        if ($request != '/')
+        $this->_uri[] = '/' . trim($uri, '/');
+
+        if ($action != null)
         {
-            $route= explode('/', $request);
-            var_dump($route);
-            if($route[2] == 'product')
+            $this->_action[] = $action;
+        }
+    }
+    public function run()
+    {
+        $uriGet = isset($_GET['uri']) ? '/' . $_GET['uri'] : '/';
+
+        foreach ($this->_uri as $key => $value)
+        {
+            if (preg_match("#^$value$#", $uriGet))
             {
-                $productId = $route[3];
-                $productController->showDetails($productId);
+                $action = $this->_action[$key];
+                $this->runAction($action);
             }
+        }
+    }
+    private function runAction($action)
+    {
+        if($action instanceof \Closure)
+        {
+            $action();
+        }
+        else
+        {
+            $params = explode('@', $action);
+            $obj = new $params[0];
+            $obj->{$params[1]}();
         }
     }
 
 }
+?>
