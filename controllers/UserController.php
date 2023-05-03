@@ -1,6 +1,6 @@
 <?php
 
-Class UserController
+/*Class UserController
 {
     function __construct(){
 
@@ -28,4 +28,4 @@ Class UserController
         $smarty->display('sesion.tpl');
     }
 
-}
+}*/

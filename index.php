@@ -4,21 +4,16 @@
     require 'RoutingManager.php';
 
     global $smarty;
-    $router = new RoutingManager();
-    $router->init();
 
 
+    //En caso de exixtir una sesion, cargamos la vista principal
     if(isset($_SESSION['userId'])){
         global $smarty;
-        $product = new Product();
-        $user = new User();
-        $user->load($_SESSION['userId']);
-        $allProducts = $product->load_all();
-        $smarty->assign('name',
-            $user->getName() );
-        $smarty->assign('products', $allProducts);
-        $smarty->display('sesion.tpl');
+        $router = new RoutingManager();
+        $router->init();
+
     }
+    //En caso de no existir sesion activa, cargamos la vista de login
     else{
         global $smarty;
         $smarty->assign('error', '');

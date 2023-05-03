@@ -1,6 +1,7 @@
 <?php
     session_start();
     require '/var/www/tienda/vendor/autoload.php';
+    //Formato de fecha y hora a usar en consultas SQL
     const DATE_FORMAT = 'Y-m-d H:i:s';
     //instancia y configuracion inicial de clase Smarty
     $smarty = new Smarty();
@@ -21,6 +22,7 @@
             require 'controllers/'.$classname . '.php';
         }
     });
+
     //Conexion a base de datos
     $conn = new mysqli("localhost", 'root', 'root', 'Users');
     $conn->set_charset("utf8mb4");
