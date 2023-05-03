@@ -1,15 +1,15 @@
 <?php
     require_once 'config/global.php';
     require 'vendor/autoload.php';
-    require 'RoutingManager.php';
+    require 'routes/Router.php';
 
     global $smarty;
 
 
-    //En caso de exixtir una sesion, cargamos la vista principal
+    //En caso de existir una sesion, cargamos el router
     if(isset($_SESSION['userId'])){
         global $smarty;
-        $router = new RoutingManager();
+        $router = new Router();
         $router->init();
 
     }

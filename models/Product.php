@@ -78,6 +78,25 @@ class Product
         }
     }
 
+    public function save(){
+        {
+            global $conn;
+            try
+            {
+                $query = $conn->prepare("UPDATE Products
+                                    SET Name=?, Price=?, Image=?
+                                    WHERE Id=?");
+                $query->bind_param('sisi',
+                    $this->name, $this->price, $this->image, $this->id);
+                $query->execute();
+                return $query->affected_rows;
+            }
+            catch (mysqli_sql_exception)
+            {
+                return false;
+            }
+        }
+    }
     public function delete(): int | bool
     {
         global $conn;
