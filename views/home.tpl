@@ -23,8 +23,8 @@
                     <tr>
                         <td class="col"> {$product['Name']}</td>
                         <td class="col"> {$product['Price']}€</td>
-                        <td><a href="/index.php?product={$product['Id']}" class="btn btn-primary">Ver detalles</a></td>
-                        <td><button class="btn btn-secondary">Editar</button></td>
+                        <td><a href="/product/{$product['Id']}/" class="btn btn-primary">Ver detalles</a></td>
+                        <td><a href="/product/{$product['Id']}/edit" class="btn btn-secondary">Editar</a></td>
                         <td><button class="btn btn-danger">Eliminar</button></td>
                         <td><button class="btn btn-success">Comprar</button></td>
                     </tr>

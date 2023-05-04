@@ -1,8 +1,13 @@
 <?php
     session_start();
-    require '/var/www/tienda/vendor/autoload.php';
     //Formato de fecha y hora a usar en consultas SQL
     const DATE_FORMAT = 'Y-m-d H:i:s';
+    const ROOT_DIR = '/var/www/tienda/';
+
+    require ROOT_DIR . 'vendor/autoload.php';
+    require_once ROOT_DIR. 'routes/Router.php';
+
+
     //instancia y configuracion inicial de clase Smarty
     $smarty = new Smarty();
     $smarty->setTemplateDir('views');
@@ -12,14 +17,14 @@
 
     //Autoloader de clases
     spl_autoload_register(function ($classname){
-        if(file_exists('models/'.$classname . '.php')){
-            require 'models/'.$classname . '.php';
+        if(file_exists(ROOT_DIR . 'models/'.$classname . '.php')){
+            require ROOT_DIR. 'models/'.$classname . '.php';
         }
     });
     //Autoloader de controladores
     spl_autoload_register(function ($classname){
-        if(file_exists('controllers/'.$classname . '.php')){
-            require 'controllers/'.$classname . '.php';
+        if(file_exists(ROOT_DIR .'controllers/'.$classname . '.php')){
+            require ROOT_DIR . 'controllers/'.$classname . '.php';
         }
     });
 

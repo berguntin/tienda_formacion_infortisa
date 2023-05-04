@@ -1,27 +1,31 @@
 <?php
 
-class Router {
-    public function init() {
-        $request = $_SERVER['REQUEST_URI'];
-        $basePath = '/';
-        $requestPath = substr($request, strlen($basePath));
+class Router
+{
+    function init(){
 
-        $productController = new ProductController();
+        $request= $_SERVER['REQUEST_URI'];
 
-        if($requestPath == ''){
-
-            $productController = new ProductController();
-            $productController->showAll();
+        if($request === '/'){
+            HomeController::home();
         }
-        if (isset($_GET['product'])) {
-            // Logica de enrutamiento para  "product"
-            $productId = $_GET['product'];
-            $productController->showDetails($productId);
+        else {
+            $controller = $_GET['ctrl'];
+            $action = $_GET['action'];
+            $id = intval($_GET['id']);
+            //Gestionamos la ruta de productos [Editar y ver detalles]
+            if($controller == 'product' && isset($id)){
 
-            if(isset($_GET['edit'])){
-                echo 'editar';
+                if(isset($action) && $action === 'edit'){
+                    ProductController::editProduct($id);
+                }
+                else ProductController::showDetails($id);
             }
+
         }
+
 
     }
+
+
 }

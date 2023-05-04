@@ -10,7 +10,7 @@
             <div class="card-body">
                 <h5 class="card-title">{$product['Name']}</h5>
                 <p class="card-text">Ejemplo de descripcion de producto</p>
-                <a href="/index.php?edit=true&product={$product['Id']}" class="btn btn-primary">Editar</a>
+                <a href="edit" class="btn btn-primary">Editar</a>
             </div>
             <div class="card-footer text-body-secondary">
                 <p>Precio: {$product['Price']} €</p>

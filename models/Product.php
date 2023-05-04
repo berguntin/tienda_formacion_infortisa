@@ -78,16 +78,16 @@ class Product
         }
     }
 
-    public function save(){
+    public function save($id){
         {
             global $conn;
             try
             {
                 $query = $conn->prepare("UPDATE Products
-                                    SET Name=?, Price=?, Image=?
+                                    SET Name=?, Price=?
                                     WHERE Id=?");
-                $query->bind_param('sisi',
-                    $this->name, $this->price, $this->image, $this->id);
+                $query->bind_param('sii',
+                    $this->name, $this->price, $id);
                 $query->execute();
                 return $query->affected_rows;
             }
