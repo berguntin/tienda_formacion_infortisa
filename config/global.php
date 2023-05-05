@@ -27,7 +27,6 @@
             require ROOT_DIR . 'controllers/'.$classname . '.php';
         }
     });
-
     //Conexion a base de datos
     $conn = new mysqli("localhost", 'root', 'root', 'Users');
     $conn->set_charset("utf8mb4");

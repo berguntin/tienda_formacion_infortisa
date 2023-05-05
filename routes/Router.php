@@ -4,15 +4,16 @@ class Router
 {
     function init(){
 
-        $request= $_SERVER['REQUEST_URI'];
+        $request= $_SERVER['QUERY_STRING'];
 
-        if($request === '/'){
+        if($request === ''){
             HomeController::home();
         }
         else {
             $controller = $_GET['ctrl'];
             $action = $_GET['action'];
             $id = intval($_GET['id']);
+
             //Gestionamos la ruta de productos [Editar y ver detalles]
             if($controller == 'product' && isset($id)){
 
@@ -21,11 +22,6 @@ class Router
                 }
                 else ProductController::showDetails($id);
             }
-
         }
-
-
     }
-
-
 }

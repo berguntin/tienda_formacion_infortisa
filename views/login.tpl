@@ -4,7 +4,7 @@
 {block name='body'}
     <div class="container container-fluid justify-content-center">
         <h3>Acceso a usuarios</h3>
-        <form id="login" action="login.php" method="POST">
+        <form id="login" method="POST" action="login.php">
             <div class="mb-3">
                 <label for="mail" class="form-label">Usuario:</label>
                 <input class="form-control" type="email" id="mail" name="mail" required>
@@ -13,7 +13,7 @@
                 <label for="password" class="form-label">Contraseña:</label>
                 <input class="form-control" type="password" id="password" name="password" required>
                 <div class="form-text">
-                    <span class="text-danger form-label">{$error}</span>
+                    <span id="errorText" class="text-danger form-label"></span>
                 </div>
             </div>
 
@@ -25,18 +25,24 @@
 {literal}
 <script type="text/javascript">
 
-   /* const loginForm = document.getElementById('login');
+   const loginForm = document.getElementById('login');
 
-    loginForm.addEventListener('submit', (event) =>{
+    loginForm.addEventListener('submit', (event) => {
         event.preventDefault();
-        const xhr = new XMLHttpRequest();
-        xhr.open("POST", '/controllers/ajax/login.php');
-        xhr.responseType = 'text';
-        xhr.onload = () => {
-            console.log(xhr.responseText);
-        }
-        xhr.send()
-    });*/
+        const data = new FormData(loginForm);
+        fetch('http://localhost/controllers/ajax/login.php', {
+            method: 'POST',
+            body: data
+        }).then(response => {
+            if(response.status == 401){
+                const errorText = document.getElementById('errorText');
+                errorText.innerText = 'Credenciales incorrectas';
+            }
+            if (response.status == 200){
+                location.reload()
+            }
+        })
+    })
 </script>
 {/literal}
 {/block}

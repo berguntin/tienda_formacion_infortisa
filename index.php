@@ -10,8 +10,6 @@
         //Iniciamos el router para gestionar las peticiones
         $router = new Router();
         $router->init();
-
-
     }
     //En caso de no existir sesion activa, cargamos la vista de login
     else{

@@ -11,6 +11,7 @@ Class ProductController{
         {
             $smarty->assign('product', $data);
             $smarty->display('product.tpl');
+
         }
         else {
             $smarty->display('error404.tpl');

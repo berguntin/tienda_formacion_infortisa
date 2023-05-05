@@ -12,6 +12,7 @@
         $product->setName($newName);
         $product->setPrice($newPrice);
         $success = $product->save($productId);
+
         if($success){
             http_response_code(200);
             echo json_encode(Array('success'=>true, 'message'=> "producto id:". $productId ." modificado correctamente"));
