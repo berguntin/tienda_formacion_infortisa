@@ -2,7 +2,6 @@
     require_once 'config/global.php';
     require 'vendor/autoload.php';
 
-
     global $smarty;
 
     //En caso de existir una sesion, cargamos el router

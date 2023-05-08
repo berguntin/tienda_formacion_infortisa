@@ -22,6 +22,9 @@ class Router
                 }
                 else ProductController::showDetails($id);
             }
+            if($controller == 'cart'){
+                HomeController::cart();
+            }
         }
     }
 }

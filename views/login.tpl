@@ -39,7 +39,7 @@
                 errorText.innerText = 'Credenciales incorrectas';
             }
             if (response.status == 200){
-                location.reload()
+                location.reload() // recarga de la pagina para cargar la url solicitada inicialmente-> Mejor UX
             }
         })
     })

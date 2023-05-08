@@ -1,5 +1,6 @@
 {*Smarty*}
 {extends file="layout.tpl"}
+{block name='title'}{$product['Name']}{/block}
 {block name='body'}
 
     <div class="container">

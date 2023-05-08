@@ -12,7 +12,24 @@ Class HomeController{
         $smarty->assign('name',
             $user->getName() );
         $smarty->assign('products', $allProducts);
+        if(isset($_SESSION['cart']['totalProducts'])){
+            $smarty->assign('totalProducts', $_SESSION['cart']['totalProducts']);
+        }
         $smarty->display('home.tpl');
+
+    }
+    public static function cart(){
+
+        global $smarty;
+
+        if(isset($_SESSION['cart'])){
+            $smarty->assign('products', $_SESSION['cart']);
+            $smarty->display('cart.tpl');
+        }
+        else{
+            $smarty->display('emptyCart.tpl');
+        }
+
 
     }
 }

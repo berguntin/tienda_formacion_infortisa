@@ -97,13 +97,13 @@ class Product
             }
         }
     }
-    public function delete(): int | bool
+    public function delete($id): int | bool
     {
         global $conn;
         try
         {
             $query = $conn->prepare("DELETE FROM Products WHERE Id=?");
-            $query->bind_param('i', $this->id);
+            $query->bind_param('i', $id);
             $query->execute();
             return $query->affected_rows;
         }
