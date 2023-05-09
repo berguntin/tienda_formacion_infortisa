@@ -23,7 +23,7 @@ nav{
 a{
     text-decoration: none;
 }
-.login-box{
+.box-content-center{
     display: flex;
     flex-direction: column;
     justify-content: center;

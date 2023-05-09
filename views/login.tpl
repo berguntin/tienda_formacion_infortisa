@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/views/css/style.css"/>
     <title>Login</title>
     <div class="container" style="justify-content: center;align-content: center;margin-top: 10%;">
-        <div class="login-box">
+        <div class="box-content-center">
             <h3>Acceso a usuarios</h3>
             <form id="login" method="POST" action="login.php">
                 <div class="mb-3">

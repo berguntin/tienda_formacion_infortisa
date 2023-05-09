@@ -33,7 +33,7 @@
             <td class="col">Total</td>
             <td class="col"></td>
             <td class="col"></td>
-            <td class="col">{$totalPrice} &euro;</td>
+            <td class="col">{if isset($totalPrice)}{$totalPrice} &euro;{/if}</td>
             <td class="col"><button class="btn btn-success">Pedir</button></td>
         </tr>
         </tfoot>

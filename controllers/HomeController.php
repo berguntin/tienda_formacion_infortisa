@@ -21,7 +21,7 @@ Class HomeController{
 
         global $smarty;
 
-        if(isset($_SESSION['cart'])){
+        if(isset($_SESSION['cart']) && count($_SESSION['cart'])>0){
             $smarty->assign('totalPrice', $_SESSION['totals']['totalPrice']);
             $smarty->assign('products', $_SESSION['cart']);
             $smarty->display('cart.tpl');
