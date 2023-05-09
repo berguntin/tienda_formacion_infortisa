@@ -9,11 +9,10 @@ Class HomeController{
         $user = new User();
         $user->load($_SESSION['userId']);
         $allProducts = $product->load_all();
-        $smarty->assign('name',
-            $user->getName() );
+
         $smarty->assign('products', $allProducts);
-        if(isset($_SESSION['cart']['totalProducts'])){
-            $smarty->assign('totalProducts', $_SESSION['cart']['totalProducts']);
+        if(isset($_SESSION['totalProducts'])){
+            $smarty->assign('totalProducts', $_SESSION['totalProducts']);
         }
         $smarty->display('home.tpl');
 
@@ -23,6 +22,7 @@ Class HomeController{
         global $smarty;
 
         if(isset($_SESSION['cart'])){
+            $smarty->assign('totalPrice', $_SESSION['totals']['totalPrice']);
             $smarty->assign('products', $_SESSION['cart']);
             $smarty->display('cart.tpl');
         }

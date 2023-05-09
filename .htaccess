@@ -1,0 +1,8 @@
+RewriteEngine On
+
+RewriteCond ${REQUEST_FILENAME} !-f
+RewriteCond ${REQUEST_FILENAME} !-d
+
+#RewriteRule ^(.*)?$ index.php?uri=$1 [QSA,L]
+#RewriteRule ^([a-zA-Z]*)/([a-zA-Z0-9-_+]*)/?$ index.php?ctrl=$1&id=$2
+RewriteRule ^([a-zA-Z]*)/([a-zA-Z0-9-_+]*)/([a-zA-Z]*)/?$ index.php?ctrl=$1&id=$2&action=$3

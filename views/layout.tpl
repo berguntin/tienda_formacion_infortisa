@@ -10,11 +10,60 @@
     <title>{block 'title'}{/block}</title>
     </head>
     <body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="container-fluid">
+                <a href="/"><i class="bi bi-house" style="font-size:xx-large"></i></a>
+                <div>
+                    Hola, {$smarty.session.name}
+                </div>
+                <div class="user-menu">
+                    <a href="http://localhost/cart/view/" class="d-flex shopping-cart">
+                        <i class="bi bi-cart4" id='cart' style="font-size:xx-large"></i>
+                        <span id="cart-counter">
+                            {if isset($smarty.session.totals.totalItems)}{$smarty.session.totals.totalItems}{/if}
+                        </span>
+                    </a>
+                    <form  class="close-session" id="closeSession">
+                        <input name="closeSession" type="hidden" value="{$smarty.session.userId}">
+                        <button type="submit" class="btn btn-outline-secondary">Cerrar sesion X</button>
+                    </form>
+                </div>
+
+
+            </div>
+        </nav>
+    </div>
         {block 'body'}{/block}
     </body>
     <footer>
-        {block 'footer'} {/block}
+
+            <span>
+                💻 con ♥ por Hugo Bermúdez
+            </span>
+
+
     </footer>
+{literal}
+    <script>
+        const closeSession = document.getElementById('closeSession');
+
+        closeSession.addEventListener('submit', (event) => {
+
+            event.preventDefault();
+            const data = new FormData(closeSession);
+
+            fetch('http://localhost/controllers/ajax/closeSession.php',
+            {
+                method: 'POST',
+                body: data
+            }).then(response=> {
+                response.json()
+                location.reload()
+            })
+        })
+    </script>
+{/literal}
     </html>
 
 

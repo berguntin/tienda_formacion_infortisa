@@ -2,17 +2,9 @@
 {extends file='layout.tpl'}
 {block name='head'}{/block}
 {block name='title'}Vista de productos{/block}
+{block name='header'}{/block}
 {block name='body'}
     <div class="container">
-    <nav class="navbar">
-        <div class="container-fluid">
-            <div>Hola, {$name}</div>
-            <a href="http://localhost/cart/view/" class="d-flex shopping-cart">
-                <i class="bi bi-cart4" id='cart' style="font-size:xxx-large"></i>
-                <span id="cart-counter">{if isset($totalProducts)}{$totalProducts}{/if}</span>
-            </a>
-        </div>
-    </nav>
         <main>
             <table class="table">
                 <thead>
@@ -93,7 +85,7 @@
                         cartCounter.innerText= jsonData.lines;
                     }
                     else {
-                        console.log('No se ha agregado')
+                        alert('No se ha agregado el producto')
                     }
                 })
             })
